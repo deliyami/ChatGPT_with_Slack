@@ -30,3 +30,15 @@ bot_token = "<your-slack-bot-token>"
 ```
 python main.py
 ```
+
+### 5. version
+
+```
+$ python --version
+Python 3.10.11
+```
+
+```
+$ pip --version
+pip 23.0.1
+```
