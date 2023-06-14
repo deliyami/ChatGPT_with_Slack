@@ -2,3 +2,4 @@
 openai
 slack
 slackClient
+python-dotenv

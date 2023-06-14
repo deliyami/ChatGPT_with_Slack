@@ -1,9 +1,9 @@
 import openai
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-# 発給された OpenAI API Key 記入
-YOUR_API_KEY = '<your-openai-api-key>'
-
-def ChatGPT(prompt, API_KEY=YOUR_API_KEY):
+def ChatGPT(prompt, API_KEY=os.environ.get("YOUR_API_KEY")):
     # api key 設定
     openai.api_key = API_KEY
 
