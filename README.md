@@ -1,23 +1,32 @@
 # ChatGPT For SlackBot
-ChatGPT기능을 가진 슬랙봇 개발
-[사용법 정리](https://manchann.tistory.com/43)
 
-### 1. 필수 라이브러리 설치
+ChatGPT 機能の SLACK BOT
+[参考](https://manchann.tistory.com/43)
+
+### 1. 必須 library
+
 ```
 pip install -r requirements.txt
 ```
-### 2. OpenAI API Key 기입
+
+### 2. OpenAI API Key 記入
+
 chatgpt.py
+
 ```
 YOUR_API_KEY = '<your-openai-api-key>'
 ```
 
-### 3. Slack Bot user token 기입
+### 3. Slack Bot user token 記入
+
 main.py
+
 ```
 bot_token = "<your-slack-bot-token>"
 ```
-### 4. 코드 실행
+
+### 4. code アクセス
+
 ```
 python main.py
 ```

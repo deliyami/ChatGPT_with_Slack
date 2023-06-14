@@ -1,10 +1,10 @@
 from slack import RTMClient
 from chatgpt import ChatGPT
 
-# 발급받은 슬랙 bot user token 기
+# 発給された Slack bot user token 記入
 bot_token = "<your-slack-bot-token>"
 
-# 지속적으로 슬랙 메세지 트래킹
+# 自足的に Slack メッセージ tracking
 @RTMClient.run_on(event="message")
 def chatgptbot(**payload):
     data = payload["data"]
@@ -14,26 +14,25 @@ def chatgptbot(**payload):
     origin_text = data.get("text", "")
     tag_code = origin_text.split(" ")[0]
 
-    # 메세지 정보 파악
+    # メッセージ情報把握
     print(data)
-    # Bot이 입력한 채팅이 아닐 경우 ChatGPT 동작
+    # Botのメッセージではない場合、ChatGPTが返事
     if bot_id == "" and subtype == "" and ">" in tag_code:
         channel_id = data["channel"]
         # Extracting message send by the user on the slack
         text = data.get("text", "")
         text = text.split(">")[-1].strip()
-        # 해당 메세지 입력 시간을 파악하여 답글을 달 수 있도록 지정
+        # 入力時間を把握、返事をするようにする
         message_ts = data["ts"]
 
-        #받아온 텍스트를 ChatGPT에 전달하고 ChatGPT의 답변 저장
+        # もらったテキストをChatGPTに送る、ChatGPTの返事をセーブ
         response = ChatGPT(text)
-        # 슬랙에 메세지 전달
+        # Slackにメッセージ送る
         web_client.chat_postMessage(channel=channel_id, text=response, thread_ts=message_ts)
-
 
 if __name__ == "__main__":
     try:
-        # RTM 클라이언트 호출 및 시작
+        # RTMクライアントcallおよびstart
         rtm_client = RTMClient(token=bot_token)
         print("Starter Bot connected and running!")
         rtm_client.start()
