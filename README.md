@@ -9,20 +9,17 @@ ChatGPT 機能の SLACK BOT
 pip install -r requirements.txt
 ```
 
-### 2. OpenAI API Key 記入
-
-chatgpt.py
+### 2. .env.exampleを copy and paste 記入
 
 ```
-YOUR_API_KEY = '<your-openai-api-key>'
+cp .env.example .env
 ```
 
-### 3. Slack Bot user token 記入
-
-main.py
+### 3. .env fileにtokenを記入
 
 ```
-bot_token = "<your-slack-bot-token>"
+BOT_TOKEN=your-openai-api-key
+YOUR_API_KEY=your-slack-bot-token
 ```
 
 ### 4. code アクセス

@@ -22,6 +22,7 @@ def chatgptbot(**payload):
         # Extracting message send by the user on the slack
         text = data.get("text", "")
         text = text.split(">")[-1].strip()
+        print('this is splited text', text)
         # 入力時間を把握、返事をするようにする
         message_ts = data["ts"]
 
@@ -29,13 +30,13 @@ def chatgptbot(**payload):
         
         response = ChatGPT(text)
         # Slackにメッセージ送る
-        web_client.chat_postMessage(channel=channel_id, username = "きらきらきらり", icon_url="https://pbs.twimg.com/profile_images/1617171924316221443/vlmR21L2_400x400.jpg" ,text=response, thread_ts=message_ts)
+        web_client.chat_postMessage(channel=channel_id, username = "きらきらきらり", icon_url="https://pbs.twimg.com/profile_images/1617171924316221443/vlmR21L2_400x400.jpg", text=response, thread_ts=message_ts)
 
 if __name__ == "__main__":
     try:
         # RTMクライアントcallおよびstart
-        rtm_client = RTMClient(token=os.environ.get("BOT_TOKEN"))
         print("Starter Bot connected and running!")
+        rtm_client = RTMClient(token=os.environ.get("BOT_TOKEN"))
         rtm_client.start()
     except Exception as err:
         print(err)
